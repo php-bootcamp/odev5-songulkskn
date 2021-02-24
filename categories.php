@@ -33,7 +33,7 @@ $categories = $pdo->query("SELECT * FROM categories", PDO::FETCH_OBJ);
                 <a class="nav-link" href="#">Anasayfa</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="categories.php">Kategoriler</a>
+                <a class="nav-link" href="">Yeni Kategori Ekle</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="">Yeni Ürün Ekle</a>
@@ -47,7 +47,7 @@ $categories = $pdo->query("SELECT * FROM categories", PDO::FETCH_OBJ);
 <div class="container">
     <div class="col">
         <div class="row">
-            <h1>Products</h1>
+            <h1>Categories</h1>
             <a href="product_page.php" class="btn btn-success" style="margin-left: 50px;height: 40px"> Yeni Ürün Ekle</a>
             <table class="table">
                 <thead>
@@ -67,24 +67,24 @@ $categories = $pdo->query("SELECT * FROM categories", PDO::FETCH_OBJ);
                 while($product = $products->fetch()):
 
                     ?>
-                <tr>
-                    <th scope="row"><?= $product->uniqid; ?></th>
-                    <td><?= $product->p_name; ?></td>
-                    <td><?= $product->price; ?></td>
-                    <td><?= $product->content; ?></td>
-                    <td><?= $product->description; ?></td>
-                    <?php while($category = $categories->fetch()):
-                        if($product->category_uniqid==$category->uniqid): ?>
-                            <td> <?= $category->name; ?></td>
-                        <?php endif; ?>
-                    <?php endwhile; ?>
-                    <td>
-                        <a href="delete.php?songulvebatuhan=<?= $product->uniqid; ?>"  class="btn btn-button btn-danger">Sil</a>
-                    </td>
-                    <td>
-                        <a href="update.php?uniqid=<?= $product->uniqid; ?>" class="btn btn-button btn-warning">Güncelle</a>
-                    </td>
-                </tr>
+                    <tr>
+                        <th scope="row"><?= $product->uniqid; ?></th>
+                        <td><?= $product->p_name; ?></td>
+                        <td><?= $product->price; ?></td>
+                        <td><?= $product->content; ?></td>
+                        <td><?= $product->description; ?></td>
+                        <?php while($category = $categories->fetch()):
+                            if($product->category_uniqid==$category->uniqid): ?>
+                                <td> <?= $category->name; ?></td>
+                            <?php endif; ?>
+                        <?php endwhile; ?>
+                        <td>
+                            <a href="delete.php?songulvebatuhan=<?= $product->uniqid; ?>"  class="btn btn-button btn-danger">Sil</a>
+                        </td>
+                        <td>
+                            <a href="update.php?uniqid=<?= $product->uniqid; ?>" class="btn btn-button btn-warning">Güncelle</a>
+                        </td>
+                    </tr>
 
                 <?php endwhile; ?>
 
