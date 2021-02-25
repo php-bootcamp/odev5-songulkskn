@@ -14,7 +14,7 @@ $categories = $pdo->query("SELECT * FROM categories", PDO::FETCH_OBJ);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -30,16 +30,16 @@ $categories = $pdo->query("SELECT * FROM categories", PDO::FETCH_OBJ);
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Anasayfa</a>
+                <a class="nav-link" href="index.php">Ürünler</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="categories.php">Kategoriler</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">Yeni Ürün Ekle</a>
+                <a class="nav-link" href="">Dışa Aktar</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="importView.php">Ice Aktar</a>
+                <a class="nav-link" href="importView.php">İçe Aktar</a>
             </li>
         </ul>
     </div>
@@ -47,7 +47,7 @@ $categories = $pdo->query("SELECT * FROM categories", PDO::FETCH_OBJ);
 <div class="container">
     <div class="col">
         <div class="row">
-            <h1>Products</h1>
+            <h1>ÜRÜNLER</h1>
             <a href="product_page.php" class="btn btn-success" style="margin-left: 50px;height: 40px"> Yeni Ürün Ekle</a>
             <table class="table">
                 <thead>
@@ -75,11 +75,11 @@ $categories = $pdo->query("SELECT * FROM categories", PDO::FETCH_OBJ);
                     <td><?= $product->description; ?></td>
                     <?php while($category = $categories->fetch()):
                         if($product->category_uniqid==$category->uniqid): ?>
-                            <td> <?= $category->name; ?></td>
+                            <td> <?= $category->c_name; ?></td>
                         <?php endif; ?>
                     <?php endwhile; ?>
                     <td>
-                        <a href="delete.php?songulvebatuhan=<?= $product->uniqid; ?>"  class="btn btn-button btn-danger">Sil</a>
+                        <a href="delete.php?uniqid=<?= $product->uniqid; ?>"  class="btn btn-button btn-danger">Sil</a>
                     </td>
                     <td>
                         <a href="update.php?uniqid=<?= $product->uniqid; ?>" class="btn btn-button btn-warning">Güncelle</a>

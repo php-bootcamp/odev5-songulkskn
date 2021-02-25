@@ -4,11 +4,9 @@
 require  "database.php";
 
 $id = $_GET['uniqid'];
-
 $stmt = $pdo->prepare("SELECT * FROM products WHERE uniqid=:id");
 $stmt->execute(['id' => $id]);
 $product = $stmt->fetch();
-
 $categories = $pdo->query("SELECT * FROM categories", PDO::FETCH_OBJ);
 
 ?>
@@ -26,7 +24,7 @@ $categories = $pdo->query("SELECT * FROM categories", PDO::FETCH_OBJ);
     <title>Hello, world!</title>
 </head>
 <body>
-<form method="POST" action="functions.php">
+<form method="POST" action="add_products.php">
     <div class="form-group">
         <label for="exampleFormControlInput1">Name</label>
         <input  class="form-control" name="product_name" value="<?= $product["p_name"] ?>">
@@ -48,7 +46,7 @@ $categories = $pdo->query("SELECT * FROM categories", PDO::FETCH_OBJ);
         <label for="exampleFormControlSelect1">Categories</label>
         <select class="form-control"  name="product_category">
             <?php while($category = $categories->fetch()):?>
-                <option value="<?=$category->uniqid?>"><?=$category->name?></option>
+                <option value="<?=$category->uniqid?>"><?=$category->c_name?></option>
             <?php endwhile; ?>
         </select>
     </div>
