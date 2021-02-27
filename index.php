@@ -62,11 +62,9 @@ $categories = $pdo->query("SELECT * FROM categories", PDO::FETCH_OBJ);
                 </tr>
                 </thead>
                 <tbody>
-                <?php
 
-                while($product = $products->fetch()):
 
-                    ?>
+                <?php while($product = $products->fetch()): ?>
                 <tr>
                     <th scope="row"><?= $product->uniqid; ?></th>
                     <td><?= $product->p_name; ?></td>
@@ -82,13 +80,11 @@ $categories = $pdo->query("SELECT * FROM categories", PDO::FETCH_OBJ);
                         <a href="delete.php?uniqid=<?= $product->uniqid; ?>"  class="btn btn-button btn-danger">Sil</a>
                     </td>
                     <td>
-                        <a href="update.php?uniqid=<?= $product->uniqid; ?>" class="btn btn-button btn-warning">Güncelle</a>
+                        <a href="update.php?uniqid=<?=$product->uniqid; ?>" class="btn btn-button btn-warning">Güncelle</a>
                     </td>
                 </tr>
 
                 <?php endwhile; ?>
-
-
 
                 </tbody>
             </table>

@@ -15,6 +15,11 @@ if (isset($_POST['product_name']) && isset($_POST['product_price']) && isset($_P
     header("Location: index.php");
 
 
+
+
+
+
+
 }
 
 

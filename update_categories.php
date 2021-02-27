@@ -21,7 +21,7 @@ $category = $stmt->fetch();
     <title>Hello, world!</title>
 </head>
 <body>
-<form method="POST" action="categories.php">
+<form method="POST" >
     <div class="form-group">
         <label for="exampleFormControlInput1">Name</label>
         <input  class="form-control" name="c_name" value="<?= $category["c_name"] ?>">
@@ -30,6 +30,27 @@ $category = $stmt->fetch();
 
     <button type="submit">Kaydet</button>
 </form>
+
+
+<?php
+if($_POST) {
+    $c_name = $_POST["c_name"];
+
+
+    $guncelle = $pdo->prepare("UPDATE categories SET c_name=:adi WHERE uniqid=:id ");
+    $guncelle->execute([":adi" => $c_name , ":id" => $id]);
+
+
+    if($guncelle){
+        echo " işlem basarılı";
+        header("Refresh:1; url=categories.php");
+    } else {
+        echo "bu sefer olmadı";
+    }
+
+}
+?>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
